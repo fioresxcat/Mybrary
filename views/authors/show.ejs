@@ -1,0 +1,15 @@
+<h2><%- author.name %></h2>
+<a href='/authors/<%- author.id %>/edit'>Edit</a>
+<form action='/authors/<%- author.id %>?_method=DELETE' method='post'>
+    <button type='submit'>Delete</button> 
+</form>
+
+<h2>Book by Author</h2>
+<div>
+    <% if(books.length > 0) { %>
+        <% books.forEach(book => { %>
+            <label><%= book.title %></label>
+            <img height='150' width='100' src='<%= book.coverImagePath %>'>
+        <% }) %>
+    <% } %>
+</div>

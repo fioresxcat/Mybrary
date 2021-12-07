@@ -7,7 +7,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-
+const methodOverride = require('method-override') 
 const indexRouter = require('./routes/index.js')
 const authorRouter = require('./routes/authors.js')
 const bookRouter = require('./routes/books.js')
@@ -24,7 +24,7 @@ app.set('views', __dirname + '/views') // mọi view sẽ ở trong thư mục n
 app.set('layout', 'layouts/layout') // mọi layout sẽ ở trong file này
 app.use(expressLayouts)
 app.use(express.static('public')) // các file tĩnh được public trong project
-
+app.use(methodOverride('_method'))
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
 app.use('/books', bookRouter)
